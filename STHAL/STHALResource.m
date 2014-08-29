@@ -19,9 +19,12 @@
 }
 
 - (id)init {
-    return [self initWithDictionary:nil baseURL:nil];
+    return [self initWithDictionary:nil baseURL:nil options:0];
 }
 - (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL {
+    return [self initWithDictionary:dict baseURL:baseURL options:0];
+}
+- (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions)options {
     NSParameterAssert(dict);
     if (![dict isKindOfClass:[NSDictionary class]]) {
         return nil;
@@ -37,13 +40,13 @@
 
         NSDictionary * const linksDictionary = STHALEnsureNSDictionary(payload[@"_links"]);
         if (linksDictionary) {
-            _links = [[STHALLinks alloc] initWithDictionary:linksDictionary baseURL:baseURL];
+            _links = [[STHALLinks alloc] initWithDictionary:linksDictionary baseURL:baseURL options:options];
         }
         [payload removeObjectForKey:@"_links"];
 
         NSDictionary * const embeddedResourceDictionary = STHALEnsureNSDictionary(payload[@"_embedded"]);
         if (embeddedResourceDictionary) {
-            _embedded = [[STHALEmbeddedResources alloc] initWithDictionary:embeddedResourceDictionary baseURL:baseURL];
+            _embedded = [[STHALEmbeddedResources alloc] initWithDictionary:embeddedResourceDictionary baseURL:baseURL options:options];
         }
         [payload removeObjectForKey:@"_embedded"];
 

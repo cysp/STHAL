@@ -8,5 +8,5 @@
 
 
 @interface STHALLinks : NSObject<STHALLinks>
-- (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL;
+- (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions)options;
 @end

@@ -16,9 +16,9 @@
 }
 
 - (id)init {
-    return [self initWithDictionary:nil baseURL:nil];
+    return [self initWithDictionary:nil baseURL:nil options:0];
 }
-- (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL {
+- (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions)options {
     NSParameterAssert(dict);
     if (![dict isKindOfClass:[NSDictionary class]]) {
         return nil;
@@ -45,7 +45,7 @@
                 for (id resourceObject in resourceObjects) {
                     NSDictionary * const resourceDictionary = STHALEnsureNSDictionary(resourceObject);
                     if (resourceDictionary) {
-                        id<STHALResource> const resource = [[STHALResource alloc] initWithDictionary:resourceDictionary baseURL:baseURL];
+                        id<STHALResource> const resource = [[STHALResource alloc] initWithDictionary:resourceDictionary baseURL:baseURL options:options];
                         if (resource) {
                             [resourcesForName addObject:resource];
                         }
@@ -54,7 +54,7 @@
             } else {
                 NSDictionary * const resourceDictionary = STHALEnsureNSDictionary(obj);
                 if (resourceDictionary) {
-                    id<STHALResource> const resource = [[STHALResource alloc] initWithDictionary:resourceDictionary baseURL:baseURL];
+                    id<STHALResource> const resource = [[STHALResource alloc] initWithDictionary:resourceDictionary baseURL:baseURL options:options];
                     if (resource) {
                         [resourcesForName addObject:resource];
                     }

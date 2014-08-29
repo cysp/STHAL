@@ -23,6 +23,55 @@
     XCTAssertEqualObjects(resource.payload, input);
 }
 
+- (void)test2 {
+    NSURL * const url = [NSURL URLWithString:@"http://example.org/"];
+    NSDictionary * const input = @{
+        @"_links": @{
+            @"self": @{ @"href": @"/gluh", },
+            @"gluh": @[
+                @{ @"href": @"/gluh1", },
+                @{ @"href": @"/gluh2", },
+            ],
+        },
+        @"foo": @"bar",
+    };
+
+    STHALResource * const resource = [[STHALResource alloc] initWithDictionary:input baseURL:url];
+    XCTAssertNotNil(resource);
+    XCTAssertEqualObjects((((id<STHALLink>)resource.links[@"self"]).url.absoluteString), @"http://example.org/gluh");
+
+    NSArray * const gluhLinks = resource.links[@"gluh"];
+    XCTAssertEqual(gluhLinks.count, 2);
+    XCTAssertEqualObjects((((id<STHALLink>)gluhLinks[0]).url.absoluteString), @"http://example.org/gluh1");
+    XCTAssertEqualObjects((((id<STHALLink>)gluhLinks[1]).url.absoluteString), @"http://example.org/gluh2");
+    
+    NSDictionary * const payload = @{ @"foo": @"bar" };
+    XCTAssertEqualObjects(resource.payload, payload);
+}
+
+- (void)test3 {
+    NSURL * const url = [NSURL URLWithString:@"http://example.org/"];
+    NSDictionary * const input = @{
+        @"_links": @{
+            @"self": @"/gluh",
+            @"gluh": @[ @"/gluh1", @"gluh2" ],
+        },
+        @"foo": @"bar",
+    };
+
+    STHALResource * const resource = [[STHALResource alloc] initWithDictionary:input baseURL:url];
+    XCTAssertNotNil(resource);
+    XCTAssertEqualObjects((((id<STHALLink>)resource.links[@"self"]).url.absoluteString), @"http://example.org/gluh");
+
+    NSArray * const gluhLinks = resource.links[@"gluh"];
+    XCTAssertEqual(gluhLinks.count, 2);
+    XCTAssertEqualObjects((((id<STHALLink>)gluhLinks[0]).url.absoluteString), @"http://example.org/gluh1");
+    XCTAssertEqualObjects((((id<STHALLink>)gluhLinks[1]).url.absoluteString), @"http://example.org/gluh2");
+
+    NSDictionary * const payload = @{ @"foo": @"bar" };
+    XCTAssertEqualObjects(resource.payload, payload);
+}
+
 - (void)testRFCExample {
     NSURL * const url = [NSURL URLWithString:@"http://example.org/orders"];
     NSData * const inputData = [@"{\
@@ -62,7 +111,7 @@
 
     STHALResource * const resource = [[STHALResource alloc] initWithDictionary:input baseURL:url];
     XCTAssertNotNil(resource);
-    XCTAssertEqualObjects((((id<STHALLink>)resource.links[@"self"]).url), ([NSURL URLWithString:@"/orders" relativeToURL:url]));
+    XCTAssertEqualObjects((((id<STHALLink>)resource.links[@"self"]).url.absoluteString), @"http://example.org/orders");
 
     id<STHALLinks> const links = resource.links;
     XCTAssertNotNil(links);
@@ -80,12 +129,12 @@
     XCTAssertEqual(embeddedOrders.count, 2);
 
     id<STHALResource> const embeddedOrder1 = embeddedOrders[0];
-    XCTAssertEqualObjects((((id<STHALLink>)embeddedOrder1.links[@"self"]).url), ([NSURL URLWithString:@"/orders/123" relativeToURL:url]));
+    XCTAssertEqualObjects((((id<STHALLink>)embeddedOrder1.links[@"self"]).url.absoluteString), @"http://example.org/orders/123");
     XCTAssertEqualObjects(embeddedOrder1.payload, (@{ @"total": @30, @"currency": @"USD", @"status": @"shipped" }));
 
     id<STHALResource> const embeddedOrder2 = embeddedOrders[1];
     XCTAssertEqualObjects(embeddedOrder2.payload, (@{ @"total": @20, @"currency": @"USD", @"status": @"processing" }));
-    XCTAssertEqualObjects((((id<STHALLink>)embeddedOrder2.links[@"self"]).url), ([NSURL URLWithString:@"/orders/124" relativeToURL:url]));
+    XCTAssertEqualObjects((((id<STHALLink>)embeddedOrder2.links[@"self"]).url.absoluteString), @"http://example.org/orders/124");
 }
 
 @end

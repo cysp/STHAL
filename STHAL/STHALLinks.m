@@ -10,11 +10,11 @@
 
 
 @interface STHALLink : NSObject<STHALLink>
-- (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL;
+- (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions)options;
 @end
 
 @interface STHALTemplatedLink : NSObject<STHALLink>
-- (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL;
+- (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions)options;
 @end
 
 
@@ -23,7 +23,10 @@
     NSDictionary *_links;
 }
 
-- (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL {
+- (id)init {
+    return [self initWithDictionary:nil baseURL:nil options:0];
+}
+- (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions)options {
     NSParameterAssert(dict);
     if (![dict isKindOfClass:[NSDictionary class]]) {
         return nil;
@@ -44,38 +47,34 @@
 
             NSMutableArray * const linksForName = [[NSMutableArray alloc] initWithCapacity:1];
 
-            NSArray * const linkObjects = STHALEnsureNSArray(obj);
-            if (linkObjects) {
-                for (id linkObject in linkObjects) {
-                    NSDictionary * const linkDictionary = STHALEnsureNSDictionary(linkObject);
-                    if (linkDictionary) {
-                        if (linkDictionary[@"templated"]) {
-                            id<STHALLink> const link = [[STHALTemplatedLink alloc] initWithDictionary:linkDictionary baseURL:baseURL];
-                            if (link) {
-                                [linksForName addObject:link];
-                            }
-                        } else {
-                            id<STHALLink> const link = [[STHALLink alloc] initWithDictionary:linkDictionary baseURL:baseURL];
-                            if (link) {
-                                [linksForName addObject:link];
-                            }
-                        }
-                    }
-                }
-            } else {
-                NSDictionary * const linkDictionary = STHALEnsureNSDictionary(obj);
+            NSArray *linkObjects = STHALEnsureNSArray(obj);
+            if (!linkObjects && obj) {
+                linkObjects = @[ obj ];
+            }
+            for (id linkObject in linkObjects) {
+                NSDictionary * const linkDictionary = STHALEnsureNSDictionary(linkObject);
                 if (linkDictionary) {
                     if (linkDictionary[@"templated"]) {
-                        id<STHALLink> const link = [[STHALTemplatedLink alloc] initWithDictionary:linkDictionary baseURL:baseURL];
+                        id<STHALLink> const link = [[STHALTemplatedLink alloc] initWithDictionary:linkDictionary baseURL:baseURL options:options];
                         if (link) {
                             [linksForName addObject:link];
                         }
                     } else {
-                        id<STHALLink> const link = [[STHALLink alloc] initWithDictionary:linkDictionary baseURL:baseURL];
+                        id<STHALLink> const link = [[STHALLink alloc] initWithDictionary:linkDictionary baseURL:baseURL options:options];
                         if (link) {
                             [linksForName addObject:link];
                         }
                     }
+                    continue;
+                }
+                NSString * const linkString = STHALEnsureNSString(linkObject);
+                if (linkString) {
+                    NSDictionary * const linkDictionary = @{ @"href": linkString };
+                    id<STHALLink> const link = [[STHALLink alloc] initWithDictionary:linkDictionary baseURL:baseURL options:options];
+                    if (link) {
+                        [linksForName addObject:link];
+                    }
+                    continue;
                 }
             }
 
@@ -116,9 +115,9 @@
 }
 
 - (id)init {
-    return [self initWithDictionary:nil baseURL:nil];
+    return [self initWithDictionary:nil baseURL:nil options:0];
 }
-- (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL {
+- (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions)options {
     NSParameterAssert(dict);
     if (![dict isKindOfClass:[NSDictionary class]]) {
         return nil;
@@ -130,8 +129,8 @@
     }
 
     if ((self = [super init])) {
-        _name = STHALEnsureNSString(dict[@"name"]);
-        _type = STHALEnsureNSString(dict[@"type"]);
+        _name = STHALEnsureNSString(dict[@"name"]).copy;
+        _type = STHALEnsureNSString(dict[@"type"]).copy;
         NSString * const href = STHALEnsureNSString(dict[@"href"]);
         _url = [NSURL URLWithString:href relativeToURL:baseURL];
     }
@@ -162,9 +161,9 @@
 }
 
 - (id)init {
-    return [self initWithDictionary:nil baseURL:nil];
+    return [self initWithDictionary:nil baseURL:nil options:0];
 }
-- (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL {
+- (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions)options {
     NSParameterAssert(dict);
     if (![dict isKindOfClass:[NSDictionary class]]) {
         return nil;
@@ -177,8 +176,8 @@
 
     if ((self = [super init])) {
         _baseURL = baseURL.copy;
-        _name = STHALEnsureNSString(dict[@"name"]);
-        _type = STHALEnsureNSString(dict[@"type"]);
+        _name = STHALEnsureNSString(dict[@"name"]).copy;
+        _type = STHALEnsureNSString(dict[@"type"]).copy;
     }
     return self;
 }

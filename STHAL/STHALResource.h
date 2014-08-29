@@ -40,8 +40,14 @@
 @end
 
 
+typedef NS_OPTIONS(NSUInteger, STHALResourceReadingOptions) {
+    STHALResourceReadingOptionsNone = 0,
+    STHALResourceReadingAllowSimplifiedLinks = 0x1,
+};
+
 @interface STHALResource : NSObject<STHALResource>
 - (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL;
+- (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions)options;
 @property (nonatomic,strong,readonly) id<STHALLinks> links;
 @property (nonatomic,copy,readonly) NSDictionary *payload;
 @property (nonatomic,strong,readonly) id<STHALEmbeddedResources> embeddedResources;
