@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2C21BFFA19B318B4003E6622 /* libSTHAL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C21BFE619B3167F003E6622 /* libSTHAL.a */; };
+		2C21BFFD19B32044003E6622 /* STHALResourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C384C9819AF31EB00A2B2E8 /* STHALResourceTests.m */; };
 		2C384C8F19AF31EB00A2B2E8 /* STHAL.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C384C8E19AF31EB00A2B2E8 /* STHAL.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2C384C9919AF31EB00A2B2E8 /* STHALResourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C384C9819AF31EB00A2B2E8 /* STHALResourceTests.m */; };
 		2C384CA419AF32B900A2B2E8 /* STHALResource.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C384CA219AF32B900A2B2E8 /* STHALResource.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -358,6 +359,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C21BFFD19B32044003E6622 /* STHALResourceTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
