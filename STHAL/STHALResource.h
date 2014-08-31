@@ -27,7 +27,7 @@
 @property (nonatomic,copy,readonly) NSString *name;
 @property (nonatomic,copy,readonly) NSString *type;
 @property (nonatomic,copy,readonly) NSURL *url;
-@property (nonatomic,copy,readonly) NSArray *templateVariableKeys;
+@property (nonatomic,copy,readonly) NSArray *templateVariableNames;
 - (NSURL *)urlWithVariables:(NSDictionary *)variables;
 @property (nonatomic,copy,readonly) NSURL *deprecation;
 @end

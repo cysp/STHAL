@@ -141,7 +141,7 @@
 @synthesize type = _type;
 @synthesize deprecation = _deprecation;
 
-- (NSArray *)templateVariableKeys {
+- (NSArray *)templateVariableNames {
     return @[];
 }
 
@@ -187,7 +187,7 @@
 @synthesize type = _type;
 @synthesize deprecation = _deprecation;
 
-- (NSArray *)templateVariableKeys {
+- (NSArray *)templateVariableNames {
     return @[];
 }
 
