@@ -4,9 +4,9 @@
 //
 //  Copyright (c) 2014 Scott Talbot.
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
 
-FOUNDATION_EXPORT double STHALResourceVersionNumber;
-FOUNDATION_EXPORT const unsigned char STHALResourceVersionString[];
+FOUNDATION_EXPORT double STHALVersionNumber;
+FOUNDATION_EXPORT const unsigned char STHALVersionString[];
 
 #import <STHAL/STHALResource.h>

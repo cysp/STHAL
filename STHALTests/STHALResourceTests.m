@@ -72,7 +72,7 @@
     XCTAssertEqualObjects(resource.payload, payload);
 }
 
-- (void)testRFCExample {
+- (void)testSpecExample1 {
     NSURL * const url = [NSURL URLWithString:@"http://example.org/orders"];
     NSData * const inputData = [@"{\
         \"_links\": {\
@@ -135,6 +135,62 @@
     id<STHALResource> const embeddedOrder2 = embeddedOrders[1];
     XCTAssertEqualObjects(embeddedOrder2.payload, (@{ @"total": @20, @"currency": @"USD", @"status": @"processing" }));
     XCTAssertEqualObjects((((id<STHALLink>)embeddedOrder2.links[@"self"]).url.absoluteString), @"http://example.org/orders/124");
+}
+
+- (void)testSpecExample2 {
+    NSURL * const url = [NSURL URLWithString:@"http://example.org/orders/"];
+    NSData * const inputData = [@"{\
+        \"_links\": {\
+            \"self\": { \"href\": \"/orders\" },\
+            \"curies\": [{ \"name\": \"ea\", \"href\": \"http://example.com/docs/rels/{rel}\", \"templated\": true }],\
+            \"next\": { \"href\": \"/orders?page=2\" },\
+            \"ea:find\": {\
+                \"href\": \"/orders{?id}\",\
+                \"templated\": true\
+            },\
+            \"ea:admin\": [{\
+                \"href\": \"/admins/2\",\
+                \"title\": \"Fred\"\
+            }, {\
+                \"href\": \"/admins/5\",\
+                \"title\": \"Kate\"\
+            }]\
+        },\
+        \"currentlyProcessing\": 14,\
+        \"shippedToday\": 20,\
+        \"_embedded\": {\
+            \"ea:order\": [{\
+                \"_links\": {\
+                    \"self\": { \"href\": \"/orders/123\" },\
+                    \"ea:basket\": { \"href\": \"/baskets/98712\" },\
+                    \"ea:customer\": { \"href\": \"/customers/7809\" }\
+                },\
+                \"total\": 30.00,\
+                \"currency\": \"USD\",\
+                \"status\": \"shipped\"\
+            }, {\
+                \"_links\": {\
+                    \"self\": { \"href\": \"/orders/124\" },\
+                    \"ea:basket\": { \"href\": \"/baskets/97213\" },\
+                    \"ea:customer\": { \"href\": \"/customers/12369\" }\
+                },\
+                \"total\": 20.00,\
+                \"currency\": \"USD\",\
+                \"status\": \"processing\"\
+            }]\
+        }\
+    }" dataUsingEncoding:NSUTF8StringEncoding];
+
+    NSError *error = nil;
+    NSDictionary * const input = [NSJSONSerialization JSONObjectWithData:inputData options:0 error:NULL];
+    XCTAssertNotNil(input, @"error: %@", error);
+
+    STHALResource * const resource = [[STHALResource alloc] initWithDictionary:input baseURL:url];
+    XCTAssertNotNil(resource);
+    XCTAssertEqualObjects((((id<STHALLink>)resource.links[@"self"]).url.absoluteString), @"http://example.org/orders");
+    XCTAssertEqualObjects((((id<STHALLink>)resource.links[@"next"]).url.absoluteString), @"http://example.org/orders?page=2");
+
+    XCTAssertEqualObjects(resource.payload, (@{ @"currentlyProcessing": @14, @"shippedToday": @20 }));
 }
 
 @end

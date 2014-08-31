@@ -175,9 +175,10 @@
     }
 
     if ((self = [super init])) {
-        _baseURL = baseURL.copy;
         _name = STHALEnsureNSString(dict[@"name"]).copy;
         _type = STHALEnsureNSString(dict[@"type"]).copy;
+        _href = STHALEnsureNSString(dict[@"href"]).copy;
+        _baseURL = baseURL.copy;
     }
     return self;
 }
