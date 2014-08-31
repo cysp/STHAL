@@ -41,7 +41,7 @@
     XCTAssertEqualObjects((((id<STHALLink>)resource.links[@"self"]).url.absoluteString), @"http://example.org/gluh");
 
     NSArray * const gluhLinks = resource.links[@"gluh"];
-    XCTAssertEqual(gluhLinks.count, 2);
+    XCTAssertEqual(gluhLinks.count, 2U);
     XCTAssertEqualObjects((((id<STHALLink>)gluhLinks[0]).url.absoluteString), @"http://example.org/gluh1");
     XCTAssertEqualObjects((((id<STHALLink>)gluhLinks[1]).url.absoluteString), @"http://example.org/gluh2");
     
@@ -64,7 +64,7 @@
     XCTAssertEqualObjects((((id<STHALLink>)resource.links[@"self"]).url.absoluteString), @"http://example.org/gluh");
 
     NSArray * const gluhLinks = resource.links[@"gluh"];
-    XCTAssertEqual(gluhLinks.count, 2);
+    XCTAssertEqual(gluhLinks.count, 2U);
     XCTAssertEqualObjects((((id<STHALLink>)gluhLinks[0]).url.absoluteString), @"http://example.org/gluh1");
     XCTAssertEqualObjects((((id<STHALLink>)gluhLinks[1]).url.absoluteString), @"http://example.org/gluh2");
 
@@ -106,7 +106,7 @@
     }" dataUsingEncoding:NSUTF8StringEncoding];
 
     NSError *error = nil;
-    NSDictionary * const input = [NSJSONSerialization JSONObjectWithData:inputData options:0 error:NULL];
+    NSDictionary * const input = [NSJSONSerialization JSONObjectWithData:inputData options:(NSJSONReadingOptions)0 error:NULL];
     XCTAssertNotNil(input, @"error: %@", error);
 
     STHALResource * const resource = [[STHALResource alloc] initWithDictionary:input baseURL:url];
@@ -126,7 +126,7 @@
     NSArray * const embeddedOrders = [embedded resourcesNamed:@"orders"];
     XCTAssertNotNil(embeddedOrders);
     XCTAssert([embeddedOrders isKindOfClass:[NSArray class]]);
-    XCTAssertEqual(embeddedOrders.count, 2);
+    XCTAssertEqual(embeddedOrders.count, 2U);
 
     id<STHALResource> const embeddedOrder1 = embeddedOrders[0];
     XCTAssertEqualObjects((((id<STHALLink>)embeddedOrder1.links[@"self"]).url.absoluteString), @"http://example.org/orders/123");
@@ -182,7 +182,7 @@
     }" dataUsingEncoding:NSUTF8StringEncoding];
 
     NSError *error = nil;
-    NSDictionary * const input = [NSJSONSerialization JSONObjectWithData:inputData options:0 error:NULL];
+    NSDictionary * const input = [NSJSONSerialization JSONObjectWithData:inputData options:(NSJSONReadingOptions)0 error:NULL];
     XCTAssertNotNil(input, @"error: %@", error);
 
     STHALResource * const resource = [[STHALResource alloc] initWithDictionary:input baseURL:url];

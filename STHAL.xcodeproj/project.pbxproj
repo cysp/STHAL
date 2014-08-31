@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C21BFFA19B318B4003E6622 /* libSTHAL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C21BFE619B3167F003E6622 /* libSTHAL.a */; };
 		2C384C8F19AF31EB00A2B2E8 /* STHAL.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C384C8E19AF31EB00A2B2E8 /* STHAL.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2C384C9919AF31EB00A2B2E8 /* STHALResourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C384C9819AF31EB00A2B2E8 /* STHALResourceTests.m */; };
 		2C384CA419AF32B900A2B2E8 /* STHALResource.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C384CA219AF32B900A2B2E8 /* STHALResource.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -20,6 +21,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		2C21BFFB19B318B9003E6622 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C384C8019AF31EB00A2B2E8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2C21BFE519B3167F003E6622;
+			remoteInfo = "STHAL-ios";
+		};
 		2C5437F919AF57DE00528AB4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2C384C8019AF31EB00A2B2E8 /* Project object */;
@@ -29,11 +37,26 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		2C21BFE419B3167F003E6622 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		2C21BFCE19B315E8003E6622 /* libSTHAL.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSTHAL.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C21BFE619B3167F003E6622 /* libSTHAL.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSTHAL.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C21BFF019B3167F003E6622 /* STHALTests-ios.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "STHALTests-ios.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C384C8919AF31EB00A2B2E8 /* STHAL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = STHAL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C384C8D19AF31EB00A2B2E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C384C8E19AF31EB00A2B2E8 /* STHAL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STHAL.h; sourceTree = "<group>"; };
-		2C384C9419AF31EB00A2B2E8 /* STHALTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = STHALTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C384C9419AF31EB00A2B2E8 /* STHALTests-mac.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "STHALTests-mac.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C384C9719AF31EB00A2B2E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C384C9819AF31EB00A2B2E8 /* STHALResourceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STHALResourceTests.m; sourceTree = "<group>"; };
 		2C384CA219AF32B900A2B2E8 /* STHALResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STHALResource.h; sourceTree = "<group>"; };
@@ -46,6 +69,28 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2C21BFCB19B315E8003E6622 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C21BFE319B3167F003E6622 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C21BFED19B3167F003E6622 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C21BFFA19B318B4003E6622 /* libSTHAL.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2C384C8519AF31EB00A2B2E8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -77,7 +122,10 @@
 			isa = PBXGroup;
 			children = (
 				2C384C8919AF31EB00A2B2E8 /* STHAL.framework */,
-				2C384C9419AF31EB00A2B2E8 /* STHALTests.xctest */,
+				2C384C9419AF31EB00A2B2E8 /* STHALTests-mac.xctest */,
+				2C21BFCE19B315E8003E6622 /* libSTHAL.a */,
+				2C21BFE619B3167F003E6622 /* libSTHAL.a */,
+				2C21BFF019B3167F003E6622 /* STHALTests-ios.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -110,6 +158,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		2C21BFCC19B315E8003E6622 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2C384C8619AF31EB00A2B2E8 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -125,9 +180,61 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		2C384C8819AF31EB00A2B2E8 /* STHAL */ = {
+		2C21BFCD19B315E8003E6622 /* STHAL-mac */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2C384C9C19AF31EB00A2B2E8 /* Build configuration list for PBXNativeTarget "STHAL" */;
+			buildConfigurationList = 2C21BFDC19B315E8003E6622 /* Build configuration list for PBXNativeTarget "STHAL-mac" */;
+			buildPhases = (
+				2C21BFCA19B315E8003E6622 /* Sources */,
+				2C21BFCB19B315E8003E6622 /* Frameworks */,
+				2C21BFCC19B315E8003E6622 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "STHAL-mac";
+			productName = STHAL;
+			productReference = 2C21BFCE19B315E8003E6622 /* libSTHAL.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		2C21BFE519B3167F003E6622 /* STHAL-ios */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C21BFF419B3167F003E6622 /* Build configuration list for PBXNativeTarget "STHAL-ios" */;
+			buildPhases = (
+				2C21BFE219B3167F003E6622 /* Sources */,
+				2C21BFE319B3167F003E6622 /* Frameworks */,
+				2C21BFE419B3167F003E6622 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "STHAL-ios";
+			productName = STHAL;
+			productReference = 2C21BFE619B3167F003E6622 /* libSTHAL.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		2C21BFEF19B3167F003E6622 /* STHALTests-ios */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C21BFF719B3167F003E6622 /* Build configuration list for PBXNativeTarget "STHALTests-ios" */;
+			buildPhases = (
+				2C21BFEC19B3167F003E6622 /* Sources */,
+				2C21BFED19B3167F003E6622 /* Frameworks */,
+				2C21BFEE19B3167F003E6622 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2C21BFFC19B318B9003E6622 /* PBXTargetDependency */,
+			);
+			name = "STHALTests-ios";
+			productName = STHALTests;
+			productReference = 2C21BFF019B3167F003E6622 /* STHALTests-ios.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2C384C8819AF31EB00A2B2E8 /* STHAL-mac-framework */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C384C9C19AF31EB00A2B2E8 /* Build configuration list for PBXNativeTarget "STHAL-mac-framework" */;
 			buildPhases = (
 				2C384C8419AF31EB00A2B2E8 /* Sources */,
 				2C384C8519AF31EB00A2B2E8 /* Frameworks */,
@@ -138,14 +245,14 @@
 			);
 			dependencies = (
 			);
-			name = STHAL;
+			name = "STHAL-mac-framework";
 			productName = STHAL;
 			productReference = 2C384C8919AF31EB00A2B2E8 /* STHAL.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		2C384C9319AF31EB00A2B2E8 /* STHALTests */ = {
+		2C384C9319AF31EB00A2B2E8 /* STHALTests-mac */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2C384C9F19AF31EB00A2B2E8 /* Build configuration list for PBXNativeTarget "STHALTests" */;
+			buildConfigurationList = 2C384C9F19AF31EB00A2B2E8 /* Build configuration list for PBXNativeTarget "STHALTests-mac" */;
 			buildPhases = (
 				2C384C9019AF31EB00A2B2E8 /* Sources */,
 				2C384C9119AF31EB00A2B2E8 /* Frameworks */,
@@ -156,9 +263,9 @@
 			dependencies = (
 				2C5437FA19AF57DE00528AB4 /* PBXTargetDependency */,
 			);
-			name = STHALTests;
+			name = "STHALTests-mac";
 			productName = STHALTests;
-			productReference = 2C384C9419AF31EB00A2B2E8 /* STHALTests.xctest */;
+			productReference = 2C384C9419AF31EB00A2B2E8 /* STHALTests-mac.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -170,6 +277,15 @@
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Scott Talbot";
 				TargetAttributes = {
+					2C21BFCD19B315E8003E6622 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					2C21BFE519B3167F003E6622 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					2C21BFEF19B3167F003E6622 = {
+						CreatedOnToolsVersion = 6.0;
+					};
 					2C384C8819AF31EB00A2B2E8 = {
 						CreatedOnToolsVersion = 6.0;
 					};
@@ -190,13 +306,23 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2C384C8819AF31EB00A2B2E8 /* STHAL */,
-				2C384C9319AF31EB00A2B2E8 /* STHALTests */,
+				2C21BFCD19B315E8003E6622 /* STHAL-mac */,
+				2C384C8819AF31EB00A2B2E8 /* STHAL-mac-framework */,
+				2C384C9319AF31EB00A2B2E8 /* STHALTests-mac */,
+				2C21BFE519B3167F003E6622 /* STHAL-ios */,
+				2C21BFEF19B3167F003E6622 /* STHALTests-ios */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2C21BFEE19B3167F003E6622 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2C384C8719AF31EB00A2B2E8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -214,6 +340,27 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2C21BFCA19B315E8003E6622 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C21BFE219B3167F003E6622 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C21BFEC19B3167F003E6622 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2C384C8419AF31EB00A2B2E8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -235,14 +382,113 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		2C21BFFC19B318B9003E6622 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2C21BFE519B3167F003E6622 /* STHAL-ios */;
+			targetProxy = 2C21BFFB19B318B9003E6622 /* PBXContainerItemProxy */;
+		};
 		2C5437FA19AF57DE00528AB4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2C384C8819AF31EB00A2B2E8 /* STHAL */;
+			target = 2C384C8819AF31EB00A2B2E8 /* STHAL-mac-framework */;
 			targetProxy = 2C5437F919AF57DE00528AB4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		2C21BFDD19B315E8003E6622 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				PRODUCT_NAME = STHAL;
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = macosx;
+			};
+			name = Debug;
+		};
+		2C21BFDE19B315E8003E6622 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = STHAL;
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = macosx;
+			};
+			name = Release;
+		};
+		2C21BFF519B3167F003E6622 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = STHAL;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+			};
+			name = Debug;
+		};
+		2C21BFF619B3167F003E6622 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = STHAL;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2C21BFF819B3167F003E6622 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = STHALTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+			};
+			name = Debug;
+		};
+		2C21BFF919B3167F003E6622 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = STHALTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		2C384C9A19AF31EB00A2B2E8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -251,13 +497,19 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_ASSIGN_ENUM = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
@@ -271,16 +523,19 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_SIGN_COMPARE = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				SUPPORTED_PLATFORMS = "";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -294,13 +549,19 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_ASSIGN_ENUM = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
@@ -309,15 +570,20 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "NDEBUG=1";
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_SIGN_COMPARE = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = macosx;
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				SUPPORTED_PLATFORMS = "";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -336,7 +602,9 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = STHAL;
+				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = macosx;
 			};
 			name = Debug;
 		};
@@ -353,7 +621,9 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = STHAL;
+				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = macosx;
 			};
 			name = Release;
 		};
@@ -371,7 +641,9 @@
 				);
 				INFOPLIST_FILE = STHALTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = STHALTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = macosx;
 			};
 			name = Debug;
 		};
@@ -385,13 +657,39 @@
 				);
 				INFOPLIST_FILE = STHALTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = STHALTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = macosx;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2C21BFDC19B315E8003E6622 /* Build configuration list for PBXNativeTarget "STHAL-mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C21BFDD19B315E8003E6622 /* Debug */,
+				2C21BFDE19B315E8003E6622 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		2C21BFF419B3167F003E6622 /* Build configuration list for PBXNativeTarget "STHAL-ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C21BFF519B3167F003E6622 /* Debug */,
+				2C21BFF619B3167F003E6622 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		2C21BFF719B3167F003E6622 /* Build configuration list for PBXNativeTarget "STHALTests-ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C21BFF819B3167F003E6622 /* Debug */,
+				2C21BFF919B3167F003E6622 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		2C384C8319AF31EB00A2B2E8 /* Build configuration list for PBXProject "STHAL" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -401,7 +699,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2C384C9C19AF31EB00A2B2E8 /* Build configuration list for PBXNativeTarget "STHAL" */ = {
+		2C384C9C19AF31EB00A2B2E8 /* Build configuration list for PBXNativeTarget "STHAL-mac-framework" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2C384C9D19AF31EB00A2B2E8 /* Debug */,
@@ -410,7 +708,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2C384C9F19AF31EB00A2B2E8 /* Build configuration list for PBXNativeTarget "STHALTests" */ = {
+		2C384C9F19AF31EB00A2B2E8 /* Build configuration list for PBXNativeTarget "STHALTests-mac" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2C384CA019AF31EB00A2B2E8 /* Debug */,
