@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		2C21BFFA19B318B4003E6622 /* libSTHAL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C21BFE619B3167F003E6622 /* libSTHAL.a */; };
 		2C21BFFD19B32044003E6622 /* STHALResourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C384C9819AF31EB00A2B2E8 /* STHALResourceTests.m */; };
+		2C2677A819B604EF00D24A31 /* libSTURITemplate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C2677A319B604DE00D24A31 /* libSTURITemplate.a */; };
+		2C2677AA19B604FF00D24A31 /* STURITemplate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C26779F19B604DE00D24A31 /* STURITemplate.framework */; };
+		2C2677AF19B605E000D24A31 /* STURITemplate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C26779F19B604DE00D24A31 /* STURITemplate.framework */; };
 		2C384C8F19AF31EB00A2B2E8 /* STHAL.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C384C8E19AF31EB00A2B2E8 /* STHAL.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2C384C9919AF31EB00A2B2E8 /* STHALResourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C384C9819AF31EB00A2B2E8 /* STHALResourceTests.m */; };
 		2C384CA419AF32B900A2B2E8 /* STHALResource.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C384CA219AF32B900A2B2E8 /* STHALResource.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -28,6 +31,62 @@
 			proxyType = 1;
 			remoteGlobalIDString = 2C21BFE519B3167F003E6622;
 			remoteInfo = "STHAL-ios";
+		};
+		2C26779C19B604DE00D24A31 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C26779419B604DE00D24A31 /* STURITemplate.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2C76995B19B302D00044B497;
+			remoteInfo = "STURITemplate-mac";
+		};
+		2C26779E19B604DE00D24A31 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C26779419B604DE00D24A31 /* STURITemplate.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2C76993519B2A0F90044B497;
+			remoteInfo = "STURITemplate-mac-framework";
+		};
+		2C2677A019B604DE00D24A31 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C26779419B604DE00D24A31 /* STURITemplate.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2C76994019B2A0F90044B497;
+			remoteInfo = "STURITemplateTests-mac";
+		};
+		2C2677A219B604DE00D24A31 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C26779419B604DE00D24A31 /* STURITemplate.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2C76997319B302FB0044B497;
+			remoteInfo = "STURITemplate-ios";
+		};
+		2C2677A419B604DE00D24A31 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C26779419B604DE00D24A31 /* STURITemplate.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2C76997D19B302FB0044B497;
+			remoteInfo = "STURITemplateTests-ios";
+		};
+		2C2677A619B604EA00D24A31 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C26779419B604DE00D24A31 /* STURITemplate.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 2C76997219B302FB0044B497;
+			remoteInfo = "STURITemplate-ios";
+		};
+		2C2677AB19B6050700D24A31 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C26779419B604DE00D24A31 /* STURITemplate.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 2C76993419B2A0F90044B497;
+			remoteInfo = "STURITemplate-mac-framework";
+		};
+		2C2677AD19B605DC00D24A31 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C26779419B604DE00D24A31 /* STURITemplate.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 2C76993419B2A0F90044B497;
+			remoteInfo = "STURITemplate-mac-framework";
 		};
 		2C5437F919AF57DE00528AB4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -54,6 +113,7 @@
 		2C21BFCE19B315E8003E6622 /* libSTHAL.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSTHAL.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C21BFE619B3167F003E6622 /* libSTHAL.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSTHAL.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C21BFF019B3167F003E6622 /* STHALTests-ios.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "STHALTests-ios.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C26779419B604DE00D24A31 /* STURITemplate.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = STURITemplate.xcodeproj; path = STURITemplate/STURITemplate.xcodeproj; sourceTree = "<group>"; };
 		2C384C8919AF31EB00A2B2E8 /* STHAL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = STHAL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C384C8D19AF31EB00A2B2E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C384C8E19AF31EB00A2B2E8 /* STHAL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STHAL.h; sourceTree = "<group>"; };
@@ -89,6 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C21BFFA19B318B4003E6622 /* libSTHAL.a in Frameworks */,
+				2C2677A819B604EF00D24A31 /* libSTURITemplate.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +157,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C2677AF19B605E000D24A31 /* STURITemplate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,17 +166,39 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C5437FB19AF57E400528AB4 /* STHAL.framework in Frameworks */,
+				2C2677AA19B604FF00D24A31 /* STURITemplate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C26779319B604C100D24A31 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				2C26779419B604DE00D24A31 /* STURITemplate.xcodeproj */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		2C26779519B604DE00D24A31 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2C26779D19B604DE00D24A31 /* libSTURITemplate.a */,
+				2C26779F19B604DE00D24A31 /* STURITemplate.framework */,
+				2C2677A119B604DE00D24A31 /* STURITemplateTests-mac.xctest */,
+				2C2677A319B604DE00D24A31 /* libSTURITemplate.a */,
+				2C2677A519B604DE00D24A31 /* STURITemplateTests-ios.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2C384C7F19AF31EB00A2B2E8 = {
 			isa = PBXGroup;
 			children = (
 				2C384C8B19AF31EB00A2B2E8 /* STHAL */,
 				2C384C9519AF31EB00A2B2E8 /* STHALTests */,
+				2C26779319B604C100D24A31 /* lib */,
 				2C384C8A19AF31EB00A2B2E8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -227,6 +311,7 @@
 			);
 			dependencies = (
 				2C21BFFC19B318B9003E6622 /* PBXTargetDependency */,
+				2C2677A719B604EA00D24A31 /* PBXTargetDependency */,
 			);
 			name = "STHALTests-ios";
 			productName = STHALTests;
@@ -245,6 +330,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				2C2677AE19B605DC00D24A31 /* PBXTargetDependency */,
 			);
 			name = "STHAL-mac-framework";
 			productName = STHAL;
@@ -263,6 +349,7 @@
 			);
 			dependencies = (
 				2C5437FA19AF57DE00528AB4 /* PBXTargetDependency */,
+				2C2677AC19B6050700D24A31 /* PBXTargetDependency */,
 			);
 			name = "STHALTests-mac";
 			productName = STHALTests;
@@ -305,6 +392,12 @@
 			mainGroup = 2C384C7F19AF31EB00A2B2E8;
 			productRefGroup = 2C384C8A19AF31EB00A2B2E8 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 2C26779519B604DE00D24A31 /* Products */;
+					ProjectRef = 2C26779419B604DE00D24A31 /* STURITemplate.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				2C21BFCD19B315E8003E6622 /* STHAL-mac */,
@@ -315,6 +408,44 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		2C26779D19B604DE00D24A31 /* libSTURITemplate.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSTURITemplate.a;
+			remoteRef = 2C26779C19B604DE00D24A31 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2C26779F19B604DE00D24A31 /* STURITemplate.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = STURITemplate.framework;
+			remoteRef = 2C26779E19B604DE00D24A31 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2C2677A119B604DE00D24A31 /* STURITemplateTests-mac.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "STURITemplateTests-mac.xctest";
+			remoteRef = 2C2677A019B604DE00D24A31 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2C2677A319B604DE00D24A31 /* libSTURITemplate.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSTURITemplate.a;
+			remoteRef = 2C2677A219B604DE00D24A31 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2C2677A519B604DE00D24A31 /* STURITemplateTests-ios.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "STURITemplateTests-ios.xctest";
+			remoteRef = 2C2677A419B604DE00D24A31 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		2C21BFEE19B3167F003E6622 /* Resources */ = {
@@ -388,6 +519,21 @@
 			isa = PBXTargetDependency;
 			target = 2C21BFE519B3167F003E6622 /* STHAL-ios */;
 			targetProxy = 2C21BFFB19B318B9003E6622 /* PBXContainerItemProxy */;
+		};
+		2C2677A719B604EA00D24A31 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "STURITemplate-ios";
+			targetProxy = 2C2677A619B604EA00D24A31 /* PBXContainerItemProxy */;
+		};
+		2C2677AC19B6050700D24A31 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "STURITemplate-mac-framework";
+			targetProxy = 2C2677AB19B6050700D24A31 /* PBXContainerItemProxy */;
+		};
+		2C2677AE19B605DC00D24A31 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "STURITemplate-mac-framework";
+			targetProxy = 2C2677AD19B605DC00D24A31 /* PBXContainerItemProxy */;
 		};
 		2C5437FA19AF57DE00528AB4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -534,6 +680,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Applications/Xcode6-Beta6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
+					"$(SRCROOT)/lib/STURITemplate",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				RUN_CLANG_STATIC_ANALYZER = YES;
@@ -582,6 +733,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Applications/Xcode6-Beta6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
+					"$(SRCROOT)/lib/STURITemplate",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				RUN_CLANG_STATIC_ANALYZER = YES;
@@ -675,6 +831,7 @@
 				2C21BFDE19B315E8003E6622 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2C21BFF419B3167F003E6622 /* Build configuration list for PBXNativeTarget "STHAL-ios" */ = {
 			isa = XCConfigurationList;
@@ -683,6 +840,7 @@
 				2C21BFF619B3167F003E6622 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2C21BFF719B3167F003E6622 /* Build configuration list for PBXNativeTarget "STHALTests-ios" */ = {
 			isa = XCConfigurationList;
@@ -691,6 +849,7 @@
 				2C21BFF919B3167F003E6622 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2C384C8319AF31EB00A2B2E8 /* Build configuration list for PBXProject "STHAL" */ = {
 			isa = XCConfigurationList;

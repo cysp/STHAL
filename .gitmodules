@@ -1,0 +1,3 @@
+[submodule "lib/STURITemplate"]
+	path = lib/STURITemplate
+	url = git@github.com:cysp/STURITemplate.git

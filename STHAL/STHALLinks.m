@@ -8,6 +8,8 @@
 
 #import "STHALTypeSafety.h"
 
+#import <STURITemplate/STURITemplate.h>
+
 
 @interface STHALLink : NSObject<STHALLink>
 - (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions)options;
@@ -156,7 +158,7 @@
 @implementation STHALTemplatedLink {
 @private
     NSString *_name;
-    NSString *_href;
+    STURITemplate *_template;
     NSURL *_baseURL;
 }
 
@@ -177,7 +179,8 @@
     if ((self = [super init])) {
         _name = STHALEnsureNSString(dict[@"name"]).copy;
         _type = STHALEnsureNSString(dict[@"type"]).copy;
-        _href = STHALEnsureNSString(dict[@"href"]).copy;
+        NSString * const href = STHALEnsureNSString(dict[@"href"]).copy;
+        _template = [[STURITemplate alloc] initWithString:href];
         _baseURL = baseURL.copy;
     }
     return self;
@@ -192,10 +195,12 @@
 }
 
 - (NSURL *)url {
-    return [NSURL URLWithString:_href relativeToURL:_baseURL];
+    NSURL * const url = [_template urlByExpandingWithVariables:nil];
+    return [NSURL URLWithString:url.absoluteString relativeToURL:_baseURL];
 }
 - (NSURL *)urlWithVariables:(NSDictionary *)variables {
-    return [NSURL URLWithString:_href relativeToURL:_baseURL];
+    NSURL * const url = [_template urlByExpandingWithVariables:variables];
+    return [NSURL URLWithString:url.absoluteString relativeToURL:_baseURL];
 }
 
 @end

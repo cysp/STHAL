@@ -72,6 +72,27 @@
     XCTAssertEqualObjects(resource.payload, payload);
 }
 
+- (void)test4 {
+    NSURL * const url = [NSURL URLWithString:@"http://example.org/"];
+    NSDictionary * const input = @{
+        @"_links": @{
+            @"self": @"/gluh",
+            @"search": @{ @"href": @"/gluh{?q}", @"templated": @YES },
+        },
+        @"foo": @"bar",
+    };
+
+    STHALResource * const resource = [[STHALResource alloc] initWithDictionary:input baseURL:url];
+    XCTAssertNotNil(resource);
+    XCTAssertEqualObjects((((id<STHALLink>)resource.links[@"self"]).url.absoluteString), @"http://example.org/gluh");
+
+    NSURL * const searchURL = [[resource.links linkForRelationNamed:@"search"] urlWithVariables:@{ @"q": @"wibble" }];
+    XCTAssertEqualObjects(searchURL.absoluteString, @"http://example.org/gluh?q=wibble");
+
+    NSDictionary * const payload = @{ @"foo": @"bar" };
+    XCTAssertEqualObjects(resource.payload, payload);
+}
+
 - (void)testSpecExample1 {
     NSURL * const url = [NSURL URLWithString:@"http://example.org/orders"];
     NSData * const inputData = [@"{\
