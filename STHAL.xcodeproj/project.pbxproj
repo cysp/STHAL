@@ -7,15 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2C21BFFA19B318B4003E6622 /* libSTHAL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C21BFE619B3167F003E6622 /* libSTHAL.a */; };
 		2C21BFFD19B32044003E6622 /* STHALResourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C384C9819AF31EB00A2B2E8 /* STHALResourceTests.m */; };
-		2C2677A819B604EF00D24A31 /* libSTURITemplate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C2677A319B604DE00D24A31 /* libSTURITemplate.a */; };
 		2C2677AA19B604FF00D24A31 /* STURITemplate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C26779F19B604DE00D24A31 /* STURITemplate.framework */; };
 		2C2677AF19B605E000D24A31 /* STURITemplate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C26779F19B604DE00D24A31 /* STURITemplate.framework */; };
 		2C384C8F19AF31EB00A2B2E8 /* STHAL.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C384C8E19AF31EB00A2B2E8 /* STHAL.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2C384C9919AF31EB00A2B2E8 /* STHALResourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C384C9819AF31EB00A2B2E8 /* STHALResourceTests.m */; };
 		2C384CA419AF32B900A2B2E8 /* STHALResource.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C384CA219AF32B900A2B2E8 /* STHALResource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2C384CA519AF32B900A2B2E8 /* STHALResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C384CA319AF32B900A2B2E8 /* STHALResource.m */; };
+		2C3B6D7819B7417300608424 /* libSTHAL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C21BFE619B3167F003E6622 /* libSTHAL.a */; };
+		2C3B6D7919B7417700608424 /* libSTURITemplate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C2677A319B604DE00D24A31 /* libSTURITemplate.a */; };
+		2C3B6D7A19B741A400608424 /* STHALResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C384CA319AF32B900A2B2E8 /* STHALResource.m */; };
+		2C3B6D7B19B741A400608424 /* STHALLinks.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5437F019AF34C000528AB4 /* STHALLinks.m */; };
+		2C3B6D7C19B741A400608424 /* STHALEmbeddedResources.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5437F419AF42E100528AB4 /* STHALEmbeddedResources.m */; };
+		2C3B6D7D19B741A500608424 /* STHALResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C384CA319AF32B900A2B2E8 /* STHALResource.m */; };
+		2C3B6D7E19B741A500608424 /* STHALLinks.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5437F019AF34C000528AB4 /* STHALLinks.m */; };
+		2C3B6D7F19B741A500608424 /* STHALEmbeddedResources.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5437F419AF42E100528AB4 /* STHALEmbeddedResources.m */; };
 		2C5437F119AF34C000528AB4 /* STHALLinks.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C5437EF19AF34C000528AB4 /* STHALLinks.h */; };
 		2C5437F219AF34C000528AB4 /* STHALLinks.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5437F019AF34C000528AB4 /* STHALLinks.m */; };
 		2C5437F519AF42E100528AB4 /* STHALEmbeddedResources.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C5437F319AF42E100528AB4 /* STHALEmbeddedResources.h */; };
@@ -149,8 +155,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C21BFFA19B318B4003E6622 /* libSTHAL.a in Frameworks */,
-				2C2677A819B604EF00D24A31 /* libSTURITemplate.a in Frameworks */,
+				2C3B6D7919B7417700608424 /* libSTURITemplate.a in Frameworks */,
+				2C3B6D7819B7417300608424 /* libSTHAL.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,6 +484,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C3B6D7F19B741A500608424 /* STHALEmbeddedResources.m in Sources */,
+				2C3B6D7E19B741A500608424 /* STHALLinks.m in Sources */,
+				2C3B6D7D19B741A500608424 /* STHALResource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,6 +494,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C3B6D7C19B741A400608424 /* STHALEmbeddedResources.m in Sources */,
+				2C3B6D7B19B741A400608424 /* STHALLinks.m in Sources */,
+				2C3B6D7A19B741A400608424 /* STHALResource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,6 +1,5 @@
 //  Copyright (c) 2014 Scott Talbot. All rights reserved.
 
-#import <Cocoa/Cocoa.h>
 #import <XCTest/XCTest.h>
 
 #import <STHAL/STHAL.h>
