@@ -59,7 +59,7 @@
         @"foo": @"bar",
     };
 
-    STHALResource * const resource = [[STHALResource alloc] initWithDictionary:input baseURL:url];
+    STHALResource * const resource = [[STHALResource alloc] initWithDictionary:input baseURL:url options:STHALResourceReadingAllowSimplifiedLinks];
     XCTAssertNotNil(resource);
     XCTAssertEqualObjects((((id<STHALLink>)resource.links[@"self"]).url.absoluteString), @"http://example.org/gluh");
 
@@ -82,7 +82,7 @@
         @"foo": @"bar",
     };
 
-    STHALResource * const resource = [[STHALResource alloc] initWithDictionary:input baseURL:url];
+    STHALResource * const resource = [[STHALResource alloc] initWithDictionary:input baseURL:url options:STHALResourceReadingAllowSimplifiedLinks];
     XCTAssertNotNil(resource);
     XCTAssertEqualObjects((((id<STHALLink>)resource.links[@"self"]).url.absoluteString), @"http://example.org/gluh");
 

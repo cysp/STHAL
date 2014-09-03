@@ -68,15 +68,16 @@
                         }
                     }
                     continue;
-                }
-                NSString * const linkString = STHALEnsureNSString(linkObject);
-                if (linkString) {
-                    NSDictionary * const linkDictionary = @{ @"href": linkString };
-                    id<STHALLink> const link = [[STHALLink alloc] initWithDictionary:linkDictionary baseURL:baseURL options:options];
-                    if (link) {
-                        [linksForName addObject:link];
+                } else if (options & STHALResourceReadingAllowSimplifiedLinks) {
+                    NSString * const linkString = STHALEnsureNSString(linkObject);
+                    if (linkString) {
+                        NSDictionary * const linkDictionary = @{ @"href": linkString, @"templated": @YES };
+                        id<STHALLink> const link = [[STHALTemplatedLink alloc] initWithDictionary:linkDictionary baseURL:baseURL options:options];
+                        if (link) {
+                            [linksForName addObject:link];
+                        }
+                        continue;
                     }
-                    continue;
                 }
             }
 
@@ -101,7 +102,7 @@
 
 - (id)objectForKeyedSubscript:(NSString *)name {
     NSArray * const links = STHALEnsureNSArray(_links[name]);
-    if (links.count == 1) {
+    if (links.count <= 1) {
         return links.firstObject;
     }
     return links;
@@ -200,6 +201,9 @@
 }
 - (NSURL *)urlWithVariables:(NSDictionary *)variables {
     NSURL * const url = [_template urlByExpandingWithVariables:variables];
+    if (!url) {
+        return nil;
+    }
     return [NSURL URLWithString:url.absoluteString relativeToURL:_baseURL];
 }
 
