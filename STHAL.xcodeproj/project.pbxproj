@@ -114,6 +114,7 @@
 		2C21BFE619B3167F003E6622 /* libSTHAL.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSTHAL.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C21BFF019B3167F003E6622 /* STHALTests-ios.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "STHALTests-ios.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C26779419B604DE00D24A31 /* STURITemplate.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = STURITemplate.xcodeproj; path = STURITemplate/STURITemplate.xcodeproj; sourceTree = "<group>"; };
+		2C2677B019B6726300D24A31 /* STHALPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = STHALPlayground.playground; sourceTree = "<group>"; };
 		2C384C8919AF31EB00A2B2E8 /* STHAL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = STHAL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C384C8D19AF31EB00A2B2E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C384C8E19AF31EB00A2B2E8 /* STHAL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STHAL.h; sourceTree = "<group>"; };
@@ -196,6 +197,7 @@
 		2C384C7F19AF31EB00A2B2E8 = {
 			isa = PBXGroup;
 			children = (
+				2C2677B019B6726300D24A31 /* STHALPlayground.playground */,
 				2C384C8B19AF31EB00A2B2E8 /* STHAL */,
 				2C384C9519AF31EB00A2B2E8 /* STHALTests */,
 				2C26779319B604C100D24A31 /* lib */,
