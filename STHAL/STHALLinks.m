@@ -192,7 +192,7 @@
 @synthesize deprecation = _deprecation;
 
 - (NSArray *)templateVariableNames {
-    return @[];
+    return _template.variableNames;
 }
 
 - (NSURL *)url {
