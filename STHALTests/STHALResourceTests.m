@@ -18,6 +18,7 @@
 
     STHALResource * const resource = [[STHALResource alloc] initWithDictionary:input baseURL:url];
     XCTAssertNotNil(resource);
+    XCTAssertNil(resource.links);
 
     XCTAssertEqualObjects(resource.payload, input);
 }
@@ -89,6 +90,36 @@
     XCTAssertEqualObjects(searchURL.absoluteString, @"http://example.org/gluh?q=wibble");
 
     NSDictionary * const payload = @{ @"foo": @"bar" };
+    XCTAssertEqualObjects(resource.payload, payload);
+}
+
+- (void)test5 {
+    NSURL * const url = [NSURL URLWithString:@"http://example.org/"];
+    NSDictionary * const input = @{
+        @"_links": @{ },
+        @"foo": @"bar",
+    };
+
+    STHALResource * const resource = [[STHALResource alloc] initWithDictionary:input baseURL:url options:STHALResourceReadingAllowSimplifiedLinks];
+    XCTAssertNotNil(resource);
+    XCTAssertNotNil(resource.links);
+
+    NSDictionary * const payload = @{ @"foo": @"bar" };
+    XCTAssertEqualObjects(resource.payload, payload);
+}
+
+- (void)test6 {
+    NSURL * const url = [NSURL URLWithString:@"http://example.org/"];
+    NSDictionary * const input = @{
+        @"_links": @[ @"hmm" ],
+        @"foo": @"bar",
+    };
+
+    STHALResource * const resource = [[STHALResource alloc] initWithDictionary:input baseURL:url options:STHALResourceReadingAllowSimplifiedLinks];
+    XCTAssertNotNil(resource);
+    XCTAssertNil(resource.links);
+
+    NSDictionary * const payload = @{ @"foo": @"bar", @"_links": @[ @"hmm" ] };
     XCTAssertEqualObjects(resource.payload, payload);
 }
 

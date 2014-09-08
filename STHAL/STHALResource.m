@@ -40,15 +40,17 @@
 
         NSDictionary * const linksDictionary = STHALEnsureNSDictionary(payload[@"_links"]);
         if (linksDictionary) {
-            _links = [[STHALLinks alloc] initWithDictionary:linksDictionary baseURL:baseURL options:options];
+            if ((_links = [[STHALLinks alloc] initWithDictionary:linksDictionary baseURL:baseURL options:options])) {
+                [payload removeObjectForKey:@"_links"];
+            }
         }
-        [payload removeObjectForKey:@"_links"];
 
         NSDictionary * const embeddedResourceDictionary = STHALEnsureNSDictionary(payload[@"_embedded"]);
         if (embeddedResourceDictionary) {
-            _embedded = [[STHALEmbeddedResources alloc] initWithDictionary:embeddedResourceDictionary baseURL:baseURL options:options];
+            if ((_embedded = [[STHALEmbeddedResources alloc] initWithDictionary:embeddedResourceDictionary baseURL:baseURL options:options])) {
+                [payload removeObjectForKey:@"_embedded"];
+            }
         }
-        [payload removeObjectForKey:@"_embedded"];
 
         _payload = payload.copy;
     }
