@@ -30,11 +30,6 @@
         return nil;
     }
 
-    NSParameterAssert(baseURL);
-    if (!baseURL) {
-        return nil;
-    }
-
     if ((self = [super init])) {
         NSMutableDictionary * const payload = [[NSMutableDictionary alloc] initWithDictionary:dict];
 

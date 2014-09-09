@@ -126,11 +126,6 @@
         return nil;
     }
 
-    NSParameterAssert(baseURL);
-    if (!baseURL) {
-        return nil;
-    }
-
     if ((self = [super init])) {
         _name = STHALEnsureNSString(dict[@"name"]).copy;
         _type = STHALEnsureNSString(dict[@"type"]).copy;
@@ -169,11 +164,6 @@
 - (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions)options {
     NSParameterAssert(dict);
     if (![dict isKindOfClass:[NSDictionary class]]) {
-        return nil;
-    }
-
-    NSParameterAssert(baseURL);
-    if (!baseURL) {
         return nil;
     }
 
