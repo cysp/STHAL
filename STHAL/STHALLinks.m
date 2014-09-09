@@ -25,6 +25,60 @@
     NSDictionary *_links;
 }
 
++ (NSArray *)linksForRelationNamed:(NSString *)name inDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions)options {
+    NSArray * __block links = nil;
+    [dict enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        NSString * const relationName = STHALEnsureNSString(key);
+        if (!relationName) {
+            return;
+        }
+        if (![name isEqualToString:relationName]) {
+            return;
+        }
+
+        links = [self linksFromLinkJSONObject:obj baseURL:baseURL options:options];
+    }];
+    return links;
+}
+
++ (NSArray *)linksFromLinkJSONObject:(id)object baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions)options {
+    NSMutableArray * const linksForName = [[NSMutableArray alloc] initWithCapacity:1];
+
+    NSArray *linkObjects = STHALEnsureNSArray(object);
+    if (!linkObjects && object) {
+        linkObjects = @[ object ];
+    }
+    for (id linkObject in linkObjects) {
+        NSDictionary * const linkDictionary = STHALEnsureNSDictionary(linkObject);
+        if (linkDictionary) {
+            if (linkDictionary[@"templated"]) {
+                id<STHALLink> const link = [[STHALTemplatedLink alloc] initWithDictionary:linkDictionary baseURL:baseURL options:options];
+                if (link) {
+                    [linksForName addObject:link];
+                }
+            } else {
+                id<STHALLink> const link = [[STHALLink alloc] initWithDictionary:linkDictionary baseURL:baseURL options:options];
+                if (link) {
+                    [linksForName addObject:link];
+                }
+            }
+            continue;
+        } else if (options & STHALResourceReadingAllowSimplifiedLinks) {
+            NSString * const linkString = STHALEnsureNSString(linkObject);
+            if (linkString) {
+                NSDictionary * const linkDictionary = @{ @"href": linkString, @"templated": @YES };
+                id<STHALLink> const link = [[STHALTemplatedLink alloc] initWithDictionary:linkDictionary baseURL:baseURL options:options];
+                if (link) {
+                    [linksForName addObject:link];
+                }
+                continue;
+            }
+        }
+    }
+
+    return linksForName.copy;
+}
+
 - (id)init {
     return [self initWithDictionary:nil baseURL:nil options:0];
 }
@@ -47,41 +101,8 @@
                 return;
             }
 
-            NSMutableArray * const linksForName = [[NSMutableArray alloc] initWithCapacity:1];
-
-            NSArray *linkObjects = STHALEnsureNSArray(obj);
-            if (!linkObjects && obj) {
-                linkObjects = @[ obj ];
-            }
-            for (id linkObject in linkObjects) {
-                NSDictionary * const linkDictionary = STHALEnsureNSDictionary(linkObject);
-                if (linkDictionary) {
-                    if (linkDictionary[@"templated"]) {
-                        id<STHALLink> const link = [[STHALTemplatedLink alloc] initWithDictionary:linkDictionary baseURL:baseURL options:options];
-                        if (link) {
-                            [linksForName addObject:link];
-                        }
-                    } else {
-                        id<STHALLink> const link = [[STHALLink alloc] initWithDictionary:linkDictionary baseURL:baseURL options:options];
-                        if (link) {
-                            [linksForName addObject:link];
-                        }
-                    }
-                    continue;
-                } else if (options & STHALResourceReadingAllowSimplifiedLinks) {
-                    NSString * const linkString = STHALEnsureNSString(linkObject);
-                    if (linkString) {
-                        NSDictionary * const linkDictionary = @{ @"href": linkString, @"templated": @YES };
-                        id<STHALLink> const link = [[STHALTemplatedLink alloc] initWithDictionary:linkDictionary baseURL:baseURL options:options];
-                        if (link) {
-                            [linksForName addObject:link];
-                        }
-                        continue;
-                    }
-                }
-            }
-
-            links[relationName] = linksForName.copy;
+            NSArray * const linksForName = [self.class linksFromLinkJSONObject:obj baseURL:baseURL options:options];
+            links[relationName] = linksForName ?: @[];
         }];
         _links = links.copy;
     }

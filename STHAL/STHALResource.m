@@ -30,17 +30,27 @@
         return nil;
     }
 
-    if ((self = [super init])) {
-        NSMutableDictionary * const payload = [[NSMutableDictionary alloc] initWithDictionary:dict];
+    NSMutableDictionary * const payload = [[NSMutableDictionary alloc] initWithDictionary:dict];
+    NSDictionary * const linksDictionary = STHALEnsureNSDictionary(payload[@"_links"]);
+    NSDictionary * const embeddedResourceDictionary = STHALEnsureNSDictionary(payload[@"_embedded"]);
 
-        NSDictionary * const linksDictionary = STHALEnsureNSDictionary(payload[@"_links"]);
+    if (options & STHALResourceReadingInferBaseURL) {
+        if (!baseURL) {
+            NSArray * const selfLinks = [STHALLinks linksForRelationNamed:@"self" inDictionary:linksDictionary baseURL:nil options:options];
+            id<STHALLink> const selfLink = selfLinks.firstObject;
+            if (selfLink) {
+                baseURL = selfLink.url;
+            }
+        }
+    }
+
+    if ((self = [super init])) {
         if (linksDictionary) {
             if ((_links = [[STHALLinks alloc] initWithDictionary:linksDictionary baseURL:baseURL options:options])) {
                 [payload removeObjectForKey:@"_links"];
             }
         }
 
-        NSDictionary * const embeddedResourceDictionary = STHALEnsureNSDictionary(payload[@"_embedded"]);
         if (embeddedResourceDictionary) {
             if ((_embedded = [[STHALEmbeddedResources alloc] initWithDictionary:embeddedResourceDictionary baseURL:baseURL options:options])) {
                 [payload removeObjectForKey:@"_embedded"];
