@@ -20,6 +20,7 @@ static inline type *STHALEnsure##type(id o) { \
 
 STHALDeclareEnsure(NSArray)
 STHALDeclareEnsure(NSDictionary)
+STHALDeclareEnsure(NSNumber)
 STHALDeclareEnsure(NSString)
 
 #undef STHALDeclareEnsure

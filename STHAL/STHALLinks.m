@@ -15,10 +15,6 @@
 - (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions)options;
 @end
 
-@interface STHALTemplatedLink : NSObject<STHALLink>
-- (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions)options;
-@end
-
 
 @implementation STHALLinks {
 @private
@@ -51,23 +47,16 @@
     for (id linkObject in linkObjects) {
         NSDictionary * const linkDictionary = STHALEnsureNSDictionary(linkObject);
         if (linkDictionary) {
-            if (linkDictionary[@"templated"]) {
-                id<STHALLink> const link = [[STHALTemplatedLink alloc] initWithDictionary:linkDictionary baseURL:baseURL options:options];
-                if (link) {
-                    [linksForName addObject:link];
-                }
-            } else {
-                id<STHALLink> const link = [[STHALLink alloc] initWithDictionary:linkDictionary baseURL:baseURL options:options];
-                if (link) {
-                    [linksForName addObject:link];
-                }
+            id<STHALLink> const link = [[STHALLink alloc] initWithDictionary:linkDictionary baseURL:baseURL options:options];
+            if (link) {
+                [linksForName addObject:link];
             }
             continue;
         } else if (options & STHALResourceReadingAllowSimplifiedLinks) {
             NSString * const linkString = STHALEnsureNSString(linkObject);
             if (linkString) {
                 NSDictionary * const linkDictionary = @{ @"href": linkString, @"templated": @YES };
-                id<STHALLink> const link = [[STHALTemplatedLink alloc] initWithDictionary:linkDictionary baseURL:baseURL options:options];
+                id<STHALLink> const link = [[STHALLink alloc] initWithDictionary:linkDictionary baseURL:baseURL options:options];
                 if (link) {
                     [linksForName addObject:link];
                 }
@@ -134,47 +123,7 @@
 
 @implementation STHALLink {
 @private
-    NSString *_name;
-    NSURL *_url;
-}
-
-- (id)init {
-    return [self initWithDictionary:nil baseURL:nil options:0];
-}
-- (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions)options {
-    NSParameterAssert(dict);
-    if (![dict isKindOfClass:[NSDictionary class]]) {
-        return nil;
-    }
-
-    if ((self = [super init])) {
-        _name = STHALEnsureNSString(dict[@"name"]).copy;
-        _type = STHALEnsureNSString(dict[@"type"]).copy;
-        NSString * const href = STHALEnsureNSString(dict[@"href"]);
-        _url = [NSURL URLWithString:href relativeToURL:baseURL];
-    }
-    return self;
-}
-
-@synthesize name = _name;
-@synthesize type = _type;
-@synthesize deprecation = _deprecation;
-
-- (NSArray *)templateVariableNames {
-    return @[];
-}
-
-@synthesize url = _url;
-- (NSURL *)urlWithVariables:(NSDictionary *)variables {
-    return _url;
-}
-
-@end
-
-
-@implementation STHALTemplatedLink {
-@private
-    NSString *_name;
+    NSString *_href;
     STURITemplate *_template;
     NSURL *_baseURL;
 }
@@ -191,8 +140,13 @@
     if ((self = [super init])) {
         _name = STHALEnsureNSString(dict[@"name"]).copy;
         _type = STHALEnsureNSString(dict[@"type"]).copy;
-        NSString * const href = STHALEnsureNSString(dict[@"href"]).copy;
-        _template = [[STURITemplate alloc] initWithString:href];
+        _href = STHALEnsureNSString(dict[@"href"]).copy;
+        if (STHALEnsureNSNumber(dict[@"templated"]).boolValue) {
+            _template = [[STURITemplate alloc] initWithString:_href];
+        }
+        _title = STHALEnsureNSString(dict[@"title"]).copy;
+        _hreflang = STHALEnsureNSString(dict[@"hreflang"]).copy;
+        _deprecation = STHALEnsureNSString(dict[@"deprecation"]).copy;
         _baseURL = baseURL.copy;
     }
     return self;
@@ -200,22 +154,24 @@
 
 @synthesize name = _name;
 @synthesize type = _type;
+@dynamic url;
 @synthesize deprecation = _deprecation;
+@synthesize title = _title;
+@synthesize hreflang = _hreflang;
 
 - (NSArray *)templateVariableNames {
-    return _template.variableNames;
+    return _template.variableNames ?: @[];
 }
 
 - (NSURL *)url {
-    NSURL * const url = [_template urlByExpandingWithVariables:nil];
-    return [NSURL URLWithString:url.absoluteString relativeToURL:_baseURL];
+    return [self urlWithVariables:nil];
 }
 - (NSURL *)urlWithVariables:(NSDictionary *)variables {
-    NSURL * const url = [_template urlByExpandingWithVariables:variables];
-    if (!url) {
-        return nil;
+    if (_template) {
+        NSString * const urlString = [_template stringByExpandingWithVariables:variables];
+        return [NSURL URLWithString:urlString relativeToURL:_baseURL];
     }
-    return [NSURL URLWithString:url.absoluteString relativeToURL:_baseURL];
+    return [NSURL URLWithString:_href relativeToURL:_baseURL];
 }
 
 @end
