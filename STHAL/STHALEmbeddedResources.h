@@ -9,4 +9,5 @@
 
 @interface STHALEmbeddedResources : NSObject<STHALEmbeddedResources>
 - (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions)options;
+- (NSDictionary *)dictionaryRepresentationWithOptions:(STHALResourceWritingOptions)options;
 @end

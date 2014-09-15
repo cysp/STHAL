@@ -13,6 +13,7 @@
 
 @interface STHALLink : NSObject<STHALLink>
 - (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions)options;
+- (id)dictionaryRepresentationWithOptions:(STHALResourceWritingOptions)options;
 @end
 
 
@@ -118,6 +119,30 @@
     return links;
 }
 
+- (NSDictionary *)dictionaryRepresentationWithOptions:(STHALResourceWritingOptions)options {
+    NSMutableDictionary * const dictionary = [[NSMutableDictionary alloc] initWithCapacity:_links.count];
+    [_links enumerateKeysAndObjectsUsingBlock:^(NSString *name, NSArray *links, BOOL *stop) {
+        NSMutableArray * const linkDictionaries = [[NSMutableArray alloc] init];
+        [links enumerateObjectsUsingBlock:^(STHALLink *link, NSUInteger idx, BOOL *stop) {
+            id const linkRepresentation = [link dictionaryRepresentationWithOptions:options];
+            if (linkRepresentation) {
+                [linkDictionaries addObject:linkRepresentation];
+            }
+        }];
+        switch (linkDictionaries.count) {
+            case 0:
+                break;
+            case 1:
+                dictionary[name] = linkDictionaries.firstObject;
+                break;
+            default:
+                dictionary[name] = linkDictionaries;
+                break;
+        }
+    }];
+    return dictionary.copy;
+}
+
 @end
 
 
@@ -172,6 +197,37 @@
         return [NSURL URLWithString:urlString relativeToURL:_baseURL];
     }
     return [NSURL URLWithString:_href relativeToURL:_baseURL];
+}
+
+- (id)dictionaryRepresentationWithOptions:(STHALResourceWritingOptions)options {
+    NSMutableDictionary * const dictionary = [[NSMutableDictionary alloc] init];
+    if (_name) {
+        dictionary[@"name"] = _name;
+    }
+    if (_title) {
+        dictionary[@"title"] = _title;
+    }
+    if (_type) {
+        dictionary[@"type"] = _type;
+    }
+    dictionary[@"href"] = _href;
+    if (_hreflang) {
+        dictionary[@"hreflang"] = _hreflang;
+    }
+    if (_deprecation) {
+        dictionary[@"deprecation"] = _deprecation;
+    }
+
+    if (options & STHALResourceWritingWriteSimplifiedLinks) {
+        if ([@[ @"href" ] isEqualToArray:dictionary.allKeys]) {
+            return dictionary[@"href"];
+        }
+    }
+    if (_template) {
+        dictionary[@"templated"] = @YES;
+    }
+
+    return dictionary.copy;
 }
 
 @end

@@ -48,10 +48,17 @@ typedef NS_OPTIONS(NSUInteger, STHALResourceReadingOptions) {
     STHALResourceReadingInferBaseURL = 0x2,
 };
 
+typedef NS_OPTIONS(NSUInteger, STHALResourceWritingOptions) {
+    STHALResourceWritingOptionsNone = 0,
+    STHALResourceWritingWriteSimplifiedLinks = 0x1,
+};
+
 @interface STHALResource : NSObject<STHALResource>
 - (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL;
 - (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions)options;
 @property (nonatomic,strong,readonly) id<STHALLinks> links;
 @property (nonatomic,copy,readonly) NSDictionary *payload;
 @property (nonatomic,strong,readonly) id<STHALEmbeddedResources> embeddedResources;
+- (NSDictionary *)dictionaryRepresentation;
+- (NSDictionary *)dictionaryRepresentationWithOptions:(STHALResourceWritingOptions)options;
 @end

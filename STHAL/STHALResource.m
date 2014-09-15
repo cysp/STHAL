@@ -67,4 +67,21 @@
 @synthesize payload = _payload;
 @synthesize embeddedResources = _embedded;
 
+
+- (NSDictionary *)dictionaryRepresentation {
+    return [self dictionaryRepresentationWithOptions:STHALResourceWritingOptionsNone];
+}
+- (NSDictionary *)dictionaryRepresentationWithOptions:(STHALResourceWritingOptions)options {
+    NSMutableDictionary * const dictionary = [[NSMutableDictionary alloc] initWithDictionary:_payload];
+    NSDictionary * const linksDictionary = [_links dictionaryRepresentationWithOptions:options];
+    if (linksDictionary) {
+        dictionary[@"_links"] = linksDictionary;
+    }
+    NSDictionary * const embeddedResourcesDictionary = [_embedded dictionaryRepresentationWithOptions:options];
+    if (embeddedResourcesDictionary) {
+        dictionary[@"_embedded"] = embeddedResourcesDictionary;
+    }
+    return dictionary;
+}
+
 @end

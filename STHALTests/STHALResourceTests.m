@@ -21,6 +21,8 @@
     XCTAssertNil(resource.links);
 
     XCTAssertEqualObjects(resource.payload, input);
+
+    XCTAssertEqualObjects(resource.dictionaryRepresentation, input);
 }
 
 - (void)test2 {
@@ -47,6 +49,8 @@
     
     NSDictionary * const payload = @{ @"foo": @"bar" };
     XCTAssertEqualObjects(resource.payload, payload);
+
+    XCTAssertEqualObjects(resource.dictionaryRepresentation, input);
 }
 
 - (void)test3 {
@@ -70,6 +74,8 @@
 
     NSDictionary * const payload = @{ @"foo": @"bar" };
     XCTAssertEqualObjects(resource.payload, payload);
+
+    XCTAssertEqualObjects([resource dictionaryRepresentationWithOptions:STHALResourceWritingWriteSimplifiedLinks], input);
 }
 
 - (void)test4 {
@@ -91,6 +97,27 @@
 
     NSDictionary * const payload = @{ @"foo": @"bar" };
     XCTAssertEqualObjects(resource.payload, payload);
+
+    {
+        NSDictionary * const expected = @{
+            @"_links": @{
+                @"self": @{ @"href": @"/gluh", @"templated": @YES },
+                @"search": @{ @"href": @"/gluh{?q}", @"templated": @YES },
+            },
+            @"foo": @"bar",
+        };
+        XCTAssertEqualObjects([resource dictionaryRepresentationWithOptions:STHALResourceWritingOptionsNone], expected);
+    }
+    {
+        NSDictionary * const expected = @{
+            @"_links": @{
+                @"self": @"/gluh",
+                @"search": @"/gluh{?q}",
+            },
+            @"foo": @"bar",
+        };
+        XCTAssertEqualObjects([resource dictionaryRepresentationWithOptions:STHALResourceWritingWriteSimplifiedLinks], expected);
+    }
 }
 
 - (void)test5 {
@@ -106,6 +133,8 @@
 
     NSDictionary * const payload = @{ @"foo": @"bar" };
     XCTAssertEqualObjects(resource.payload, payload);
+
+    XCTAssertEqualObjects(resource.dictionaryRepresentation, input);
 }
 
 - (void)test6 {
@@ -121,6 +150,8 @@
 
     NSDictionary * const payload = @{ @"foo": @"bar", @"_links": @[ @"hmm" ] };
     XCTAssertEqualObjects(resource.payload, payload);
+
+    XCTAssertEqualObjects(resource.dictionaryRepresentation, input);
 }
 
 - (void)testSpecExample1 {
@@ -186,6 +217,8 @@
     id<STHALResource> const embeddedOrder2 = embeddedOrders[1];
     XCTAssertEqualObjects(embeddedOrder2.payload, (@{ @"total": @20, @"currency": @"USD", @"status": @"processing" }));
     XCTAssertEqualObjects((((id<STHALLink>)embeddedOrder2.links[@"self"]).url.absoluteString), @"http://example.org/orders/124");
+
+    XCTAssertEqualObjects(resource.dictionaryRepresentation, input);
 }
 
 - (void)testSpecExample2 {
@@ -193,7 +226,6 @@
     NSData * const inputData = [@"{\
         \"_links\": {\
             \"self\": { \"href\": \"/orders\" },\
-            \"curies\": [{ \"name\": \"ea\", \"href\": \"http://example.com/docs/rels/{rel}\", \"templated\": true }],\
             \"next\": { \"href\": \"/orders?page=2\" },\
             \"ea:find\": {\
                 \"href\": \"/orders{?id}\",\
@@ -242,6 +274,8 @@
     XCTAssertEqualObjects((((id<STHALLink>)resource.links[@"next"]).url.absoluteString), @"http://example.org/orders?page=2");
 
     XCTAssertEqualObjects(resource.payload, (@{ @"currentlyProcessing": @14, @"shippedToday": @20 }));
+
+    XCTAssertEqualObjects(resource.dictionaryRepresentation, input);
 }
 
 @end

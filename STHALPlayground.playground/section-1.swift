@@ -26,3 +26,5 @@ r.links.linkForRelationNamed("foo")?.urlWithVariables(["bar": "baz"])?.absoluteS
 r.links.linkForRelationNamed("bar")?.urlWithVariables(["a": "0", "b": "1", "c": 2])?.absoluteString
 r.links.linkForRelationNamed("bar")?.urlWithVariables(["a": [ "0", "1", 2 ]])?.absoluteString
 r.links.linkForRelationNamed("baz")?.urlWithVariables(["id": "foobarbaz"])?.absoluteString
+
+r.dictionaryRepresentationWithOptions(.WriteSimplifiedLinks)

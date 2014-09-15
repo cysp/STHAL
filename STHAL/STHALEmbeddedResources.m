@@ -100,4 +100,27 @@
     return resources;
 }
 
+- (NSDictionary *)dictionaryRepresentationWithOptions:(STHALResourceWritingOptions)options {
+    NSMutableDictionary * const dictionary = [[NSMutableDictionary alloc] initWithCapacity:_resources.count];
+    [_resources enumerateKeysAndObjectsUsingBlock:^(id<NSCopying> key, id obj, BOOL *stop) {
+        NSArray * const array = STHALEnsureNSArray(obj);
+        if (array) {
+            NSMutableArray * const embeddedDictionaries = [[NSMutableArray alloc] initWithCapacity:array.count];
+            [array enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                NSDictionary * const embeddedDictionary = [obj dictionaryRepresentationWithOptions:options];
+                if (embeddedDictionary) {
+                    [embeddedDictionaries addObject:embeddedDictionary];
+                }
+            }];
+            dictionary[key] = embeddedDictionaries;
+        } else {
+            NSDictionary * const embeddedDictionary = [obj dictionaryRepresentationWithOptions:options];
+            if (embeddedDictionary) {
+                dictionary[key] = embeddedDictionary;
+            }
+        }
+    }];
+    return dictionary.copy;
+}
+
 @end
