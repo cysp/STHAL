@@ -78,11 +78,6 @@
         return nil;
     }
 
-    NSParameterAssert(baseURL);
-    if (!baseURL) {
-        return nil;
-    }
-
     if ((self = [super init])) {
         NSMutableDictionary * const links = [[NSMutableDictionary alloc] initWithCapacity:dict.count];
         [dict enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
