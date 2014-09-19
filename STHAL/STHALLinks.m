@@ -157,10 +157,15 @@
         return nil;
     }
 
+    NSString * const href = STHALEnsureNSString(dict[@"href"]);
+    if (!href) {
+        return nil;
+    }
+
     if ((self = [super init])) {
         _name = STHALEnsureNSString(dict[@"name"]).copy;
         _type = STHALEnsureNSString(dict[@"type"]).copy;
-        _href = STHALEnsureNSString(dict[@"href"]).copy;
+        _href = href.copy;
         if (STHALEnsureNSNumber(dict[@"templated"]).boolValue) {
             _template = [[STURITemplate alloc] initWithString:_href];
         }
