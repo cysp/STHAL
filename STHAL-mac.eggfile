@@ -1,0 +1,3 @@
+platform :osx
+
+egg 'STURITemplate-mac', :url=>'git@github.com:cysp/STURITemplate.git'
