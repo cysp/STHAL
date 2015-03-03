@@ -70,7 +70,8 @@
 }
 
 - (id)init {
-    return [self initWithDictionary:nil baseURL:nil options:0];
+    [self doesNotRecognizeSelector:_cmd];
+    return nil;
 }
 - (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions)options {
     NSParameterAssert(dict);

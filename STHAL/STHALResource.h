@@ -10,35 +10,35 @@
 @protocol STHALLinks;
 @protocol STHALEmbeddedResources;
 @protocol STHALResource <NSObject>
-@property (nonatomic,strong,readonly) id<STHALLinks> links;
-@property (nonatomic,copy,readonly) NSDictionary *payload;
-@property (nonatomic,strong,readonly) id<STHALEmbeddedResources> embeddedResources;
+@property (nonatomic,strong,readonly) id<STHALLinks> __nullable links;
+@property (nonatomic,copy,readonly) NSDictionary * __nonnull payload;
+@property (nonatomic,strong,readonly) id<STHALEmbeddedResources> __nullable embeddedResources;
 @end
 
 @protocol STHALLink;
 @protocol STHALLinks <NSObject>
-@property (nonatomic,copy,readonly) NSArray *relationNames;
-- (id<STHALLink>)linkForRelationNamed:(NSString *)name;
-- (NSArray *)linksForRelationNamed:(NSString *)name;
-- (id)objectForKeyedSubscript:(NSString *)name;
+@property (nonatomic,copy,readonly) NSArray * __nonnull relationNames;
+- (id<STHALLink> __nullable)linkForRelationNamed:(NSString * __nonnull)name;
+- (NSArray * __nullable)linksForRelationNamed:(NSString * __nonnull)name;
+- (id __nullable)objectForKeyedSubscript:(NSString * __nonnull)name;
 @end
 
 @protocol STHALLink <NSObject>
-@property (nonatomic,copy,readonly) NSString *name;
-@property (nonatomic,copy,readonly) NSString *title;
-@property (nonatomic,copy,readonly) NSString *type;
-@property (nonatomic,copy,readonly) NSString *hreflang;
-@property (nonatomic,copy,readonly) NSArray *templateVariableNames;
-@property (nonatomic,copy,readonly) NSURL *url;
-- (NSURL *)urlWithVariables:(NSDictionary *)variables;
-@property (nonatomic,copy,readonly) NSURL *deprecation;
+@property (nonatomic,copy,readonly) NSString * __nullable name;
+@property (nonatomic,copy,readonly) NSString * __nullable title;
+@property (nonatomic,copy,readonly) NSString * __nullable type;
+@property (nonatomic,copy,readonly) NSString * __nullable hreflang;
+@property (nonatomic,copy,readonly) NSArray * __nonnull templateVariableNames;
+@property (nonatomic,copy,readonly) NSURL * __nullable url;
+- (NSURL * __nullable)urlWithVariables:(NSDictionary * __nullable)variables;
+@property (nonatomic,copy,readonly) NSURL * __nullable deprecation;
 @end
 
 @protocol STHALEmbeddedResources <NSObject>
-@property (nonatomic,copy,readonly) NSArray *resourceNames;
-- (id<STHALResource>)resourceNamed:(NSString *)name;
-- (NSArray *)resourcesNamed:(NSString *)name;
-- (id)objectForKeyedSubscript:(NSString *)name;
+@property (nonatomic,copy,readonly) NSArray * __nonnull resourceNames;
+- (id<STHALResource> __nullable)resourceNamed:(NSString * __nonnull)name;
+- (NSArray * __nullable)resourcesNamed:(NSString * __nonnull)name;
+- (id __nullable)objectForKeyedSubscript:(NSString * __nonnull)name;
 @end
 
 
@@ -54,11 +54,11 @@ typedef NS_OPTIONS(NSUInteger, STHALResourceWritingOptions) {
 };
 
 @interface STHALResource : NSObject<STHALResource>
-- (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL;
-- (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions)options;
-@property (nonatomic,strong,readonly) id<STHALLinks> links;
-@property (nonatomic,copy,readonly) NSDictionary *payload;
-@property (nonatomic,strong,readonly) id<STHALEmbeddedResources> embeddedResources;
-- (NSDictionary *)dictionaryRepresentation;
-- (NSDictionary *)dictionaryRepresentationWithOptions:(STHALResourceWritingOptions)options;
+- (id __nullable)initWithDictionary:(NSDictionary * __nonnull)dict baseURL:(NSURL * __nullable)baseURL;
+- (id __nullable)initWithDictionary:(NSDictionary * __nonnull)dict baseURL:(NSURL * __nullable)baseURL options:(STHALResourceReadingOptions)options;
+@property (nonatomic,strong,readonly) id<STHALLinks> __nullable links;
+@property (nonatomic,copy,readonly) NSDictionary * __nonnull payload;
+@property (nonatomic,strong,readonly) id<STHALEmbeddedResources> __nullable embeddedResources;
+- (NSDictionary * __nonnull)dictionaryRepresentation;
+- (NSDictionary * __nonnull)dictionaryRepresentationWithOptions:(STHALResourceWritingOptions)options;
 @end

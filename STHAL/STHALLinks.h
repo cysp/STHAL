@@ -8,7 +8,7 @@
 
 
 @interface STHALLinks : NSObject<STHALLinks>
-+ (NSArray *)linksForRelationNamed:(NSString *)name inDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions)options;
-- (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions)options;
-- (NSDictionary *)dictionaryRepresentationWithOptions:(STHALResourceWritingOptions)options;
++ (NSArray * __nullable)linksForRelationNamed:(NSString * __nonnull)name inDictionary:(NSDictionary * __nonnull)dict baseURL:(NSURL * __nullable)baseURL options:(STHALResourceReadingOptions)options;
+- (id __nullable)initWithDictionary:(NSDictionary * __nonnull)dict baseURL:(NSURL * __nullable)baseURL options:(STHALResourceReadingOptions)options;
+- (NSDictionary * __nonnull)dictionaryRepresentationWithOptions:(STHALResourceWritingOptions)options;
 @end

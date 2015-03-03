@@ -19,7 +19,8 @@
 }
 
 - (id)init {
-    return [self initWithDictionary:nil baseURL:nil options:0];
+    [self doesNotRecognizeSelector:_cmd];
+    return nil;
 }
 - (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL {
     return [self initWithDictionary:dict baseURL:baseURL options:0];
