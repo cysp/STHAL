@@ -46,6 +46,7 @@ typedef NS_OPTIONS(NSUInteger, STHALResourceReadingOptions) {
     STHALResourceReadingOptionsNone = 0,
     STHALResourceReadingAllowSimplifiedLinks = 0x1,
     STHALResourceReadingInferBaseURL = 0x2,
+    STHALResourceReadingInferSelfLink = 0x4,
 };
 
 typedef NS_OPTIONS(NSUInteger, STHALResourceWritingOptions) {

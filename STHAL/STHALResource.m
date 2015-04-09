@@ -31,8 +31,19 @@
     }
 
     NSMutableDictionary * const payload = [[NSMutableDictionary alloc] initWithDictionary:dict];
-    NSDictionary * const linksDictionary = STHALEnsureNSDictionary(payload[@"_links"]);
+    NSMutableDictionary *linksDictionary = STHALEnsureNSDictionary(payload[@"_links"]).mutableCopy;
     NSDictionary * const embeddedResourceDictionary = STHALEnsureNSDictionary(payload[@"_embedded"]);
+
+    if (options & STHALResourceReadingInferSelfLink) {
+        if (baseURL) {
+            if (!linksDictionary[@"self"]) {
+                if (!linksDictionary) {
+                     linksDictionary = NSMutableDictionary.dictionary;
+                }
+                linksDictionary[@"self"] = baseURL.absoluteString;
+            }
+        }
+    }
 
     if (options & STHALResourceReadingInferBaseURL) {
         if (!baseURL) {
