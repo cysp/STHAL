@@ -4,6 +4,8 @@ matrix:
     include:
         - xcode_sdk: iphonesimulator7.1
           xcode_scheme: STHAL-ios
+        - xcode_sdk: iphonesimulator8.1
+          xcode_scheme: STHAL-ios
         - xcode_sdk: macosx
           xcode_scheme: STHAL-mac
 branches:
