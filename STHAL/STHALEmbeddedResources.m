@@ -32,7 +32,7 @@
     if ((self = [super init])) {
         NSMutableDictionary * const resources = [[NSMutableDictionary alloc] initWithCapacity:dict.count];
 
-        [dict enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        [dict enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL * __unused stop) {
             NSString * const resourceName = STHALEnsureNSString(key);
             if (!resourceName) {
                 return;
@@ -102,11 +102,11 @@
 
 - (NSDictionary *)dictionaryRepresentationWithOptions:(STHALResourceWritingOptions)options {
     NSMutableDictionary * const dictionary = [[NSMutableDictionary alloc] initWithCapacity:_resources.count];
-    [_resources enumerateKeysAndObjectsUsingBlock:^(id<NSCopying> key, id obj, BOOL *stop) {
+    [_resources enumerateKeysAndObjectsUsingBlock:^(id<NSCopying> key, id obj, BOOL * __unused stop) {
         NSArray * const array = STHALEnsureNSArray(obj);
         if (array) {
             NSMutableArray * const embeddedDictionaries = [[NSMutableArray alloc] initWithCapacity:array.count];
-            [array enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            [array enumerateObjectsUsingBlock:^(id obj, NSUInteger __unused idx, BOOL * __unused stop) {
                 NSDictionary * const embeddedDictionary = [obj dictionaryRepresentationWithOptions:options];
                 if (embeddedDictionary) {
                     [embeddedDictionaries addObject:embeddedDictionary];

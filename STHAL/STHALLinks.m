@@ -24,7 +24,7 @@
 
 + (NSArray *)linksForRelationNamed:(NSString *)name inDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions)options {
     NSArray * __block links = nil;
-    [dict enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+    [dict enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL * __unused stop) {
         NSString * const relationName = STHALEnsureNSString(key);
         if (!relationName) {
             return;
@@ -80,7 +80,7 @@
 
     if ((self = [super init])) {
         NSMutableDictionary * const links = [[NSMutableDictionary alloc] initWithCapacity:dict.count];
-        [dict enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        [dict enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL * __unused stop) {
             NSString * const relationName = STHALEnsureNSString(key);
             if (!relationName) {
                 return;
@@ -116,9 +116,9 @@
 
 - (NSDictionary *)dictionaryRepresentationWithOptions:(STHALResourceWritingOptions)options {
     NSMutableDictionary * const dictionary = [[NSMutableDictionary alloc] initWithCapacity:_links.count];
-    [_links enumerateKeysAndObjectsUsingBlock:^(NSString *name, NSArray *links, BOOL *stop) {
+    [_links enumerateKeysAndObjectsUsingBlock:^(NSString *name, NSArray *links, BOOL * __unused stop) {
         NSMutableArray * const linkDictionaries = [[NSMutableArray alloc] init];
-        [links enumerateObjectsUsingBlock:^(STHALLink *link, NSUInteger idx, BOOL *stop) {
+        [links enumerateObjectsUsingBlock:^(STHALLink *link, NSUInteger __unused idx, BOOL * __unused stop) {
             id const linkRepresentation = [link dictionaryRepresentationWithOptions:options];
             if (linkRepresentation) {
                 [linkDictionaries addObject:linkRepresentation];
@@ -151,7 +151,7 @@
 - (id)init {
     return [self initWithDictionary:nil baseURL:nil options:0];
 }
-- (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions)options {
+- (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions __unused)options {
     NSParameterAssert(dict);
     if (![dict isKindOfClass:[NSDictionary class]]) {
         return nil;
