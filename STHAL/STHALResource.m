@@ -18,13 +18,14 @@
     STHALEmbeddedResources *_embedded;
 }
 
-- (id)init {
-    return [self initWithDictionary:nil baseURL:nil options:0];
+- (instancetype)init {
+    [self doesNotRecognizeSelector:_cmd];
+    return nil;
 }
-- (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL {
+- (instancetype)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL {
     return [self initWithDictionary:dict baseURL:baseURL options:0];
 }
-- (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions)options {
+- (instancetype)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions)options {
     NSParameterAssert(dict);
     if (![dict isKindOfClass:[NSDictionary class]]) {
         return nil;

@@ -12,8 +12,9 @@
 
 
 @interface STHALLink : NSObject<STHALLink>
-- (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions)options;
-- (id)dictionaryRepresentationWithOptions:(STHALResourceWritingOptions)options;
+- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nullable)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions)options NS_DESIGNATED_INITIALIZER;
+- (NSDictionary *)dictionaryRepresentationWithOptions:(STHALResourceWritingOptions)options;
 @end
 
 
@@ -69,10 +70,11 @@
     return linksForName.copy;
 }
 
-- (id)init {
-    return [self initWithDictionary:nil baseURL:nil options:0];
+- (instancetype)init {
+    [self doesNotRecognizeSelector:_cmd];
+    return nil;
 }
-- (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions)options {
+- (instancetype)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions)options {
     NSParameterAssert(dict);
     if (![dict isKindOfClass:[NSDictionary class]]) {
         return nil;
@@ -148,10 +150,11 @@
     NSURL *_baseURL;
 }
 
-- (id)init {
-    return [self initWithDictionary:nil baseURL:nil options:0];
+- (instancetype)init {
+    [self doesNotRecognizeSelector:_cmd];
+    return nil;
 }
-- (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions __unused)options {
+- (instancetype)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions __unused)options {
     NSParameterAssert(dict);
     if (![dict isKindOfClass:[NSDictionary class]]) {
         return nil;

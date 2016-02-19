@@ -763,7 +763,7 @@
 					"$(EGG_HEADER_SEARCH_PATHS)",
 					"$(SRCROOT)/lib/STURITemplate",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -824,7 +824,7 @@
 					"$(EGG_HEADER_SEARCH_PATHS)",
 					"$(SRCROOT)/lib/STURITemplate",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_LDFLAGS = (
 					"$(inherited)",

@@ -11,7 +11,7 @@
 
 
 #define STHALDeclareEnsure(type) \
-static inline type *STHALEnsure##type(id o) { \
+static inline type * __nullable STHALEnsure##type(id __nullable o) { \
     if ([o isKindOfClass:[type class]]) { \
         return o; \
     } \

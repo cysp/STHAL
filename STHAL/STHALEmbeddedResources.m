@@ -15,17 +15,13 @@
     NSDictionary *_resources;
 }
 
-- (id)init {
-    return [self initWithDictionary:nil baseURL:nil options:0];
+- (instancetype)init {
+    [self doesNotRecognizeSelector:_cmd];
+    return nil;
 }
-- (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions)options {
+- (instancetype)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions)options {
     NSParameterAssert(dict);
     if (![dict isKindOfClass:[NSDictionary class]]) {
-        return nil;
-    }
-
-    NSParameterAssert(baseURL);
-    if (!baseURL) {
         return nil;
     }
 

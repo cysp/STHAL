@@ -6,8 +6,13 @@
 
 #import <STHAL/STHAL.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 
 @interface STHALEmbeddedResources : NSObject<STHALEmbeddedResources>
-- (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions)options;
+- (instancetype)init NS_UNAVAILABLE;
+- (instancetype)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL * __nullable)baseURL options:(STHALResourceReadingOptions)options;
 - (NSDictionary *)dictionaryRepresentationWithOptions:(STHALResourceWritingOptions)options;
 @end
+
+NS_ASSUME_NONNULL_END
