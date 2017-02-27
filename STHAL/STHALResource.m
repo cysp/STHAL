@@ -2,7 +2,7 @@
 //  License, v. 2.0. If a copy of the MPL was not distributed with this
 //  file, You can obtain one at http://mozilla.org/MPL/2.0/.
 //
-//  Copyright (c) 2014 Scott Talbot.
+//  Copyright (c) 2014-2016 Scott Talbot.
 
 #import <STHAL/STHALResource.h>
 
@@ -18,13 +18,14 @@
     STHALEmbeddedResources *_embedded;
 }
 
-- (id)init {
-    return [self initWithDictionary:nil baseURL:nil options:0];
+- (instancetype)init {
+    [self doesNotRecognizeSelector:_cmd];
+    return nil;
 }
-- (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL {
+- (instancetype)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL {
     return [self initWithDictionary:dict baseURL:baseURL options:0];
 }
-- (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions)options {
+- (instancetype)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions)options {
     NSParameterAssert(dict);
     if (![dict isKindOfClass:[NSDictionary class]]) {
         return nil;

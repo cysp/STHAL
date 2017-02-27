@@ -8,6 +8,6 @@
 
 
 @interface STHALEmbeddedResources : NSObject<STHALEmbeddedResources>
-- (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions)options;
+- (instancetype)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions)options NS_DESIGNATED_INITIALIZER;
 - (NSDictionary *)dictionaryRepresentationWithOptions:(STHALResourceWritingOptions)options;
 @end

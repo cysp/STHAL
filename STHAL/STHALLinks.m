@@ -11,12 +11,6 @@
 #import <STURITemplate/STURITemplate.h>
 
 
-@interface STHALLink : NSObject<STHALLink>
-- (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions)options;
-- (id)dictionaryRepresentationWithOptions:(STHALResourceWritingOptions)options;
-@end
-
-
 @implementation STHALLinks {
 @private
     NSDictionary *_links;
@@ -69,10 +63,11 @@
     return linksForName.copy;
 }
 
-- (id)init {
-    return [self initWithDictionary:nil baseURL:nil options:0];
+- (instancetype)init {
+    [self doesNotRecognizeSelector:_cmd];
+    return nil;
 }
-- (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions)options {
+- (instancetype)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions)options {
     NSParameterAssert(dict);
     if (![dict isKindOfClass:[NSDictionary class]]) {
         return nil;
@@ -148,10 +143,11 @@
     NSURL *_baseURL;
 }
 
-- (id)init {
-    return [self initWithDictionary:nil baseURL:nil options:0];
+- (instancetype)init {
+    [self doesNotRecognizeSelector:_cmd];
+    return nil;
 }
-- (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions __unused)options {
+- (instancetype)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions __unused)options {
     NSParameterAssert(dict);
     if (![dict isKindOfClass:[NSDictionary class]]) {
         return nil;

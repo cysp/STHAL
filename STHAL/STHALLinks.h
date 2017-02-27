@@ -7,8 +7,15 @@
 #import <STHAL/STHAL.h>
 
 
+@interface STHALLink : NSObject<STHALLink>
+- (instancetype __nullable)initWithDictionary:(NSDictionary<NSString *, NSString *> * __nonnull)dict baseURL:(NSURL * __nullable)baseURL options:(STHALResourceReadingOptions)options;
+- (id __nonnull)dictionaryRepresentationWithOptions:(STHALResourceWritingOptions)options;
+@end
+
+
 @interface STHALLinks : NSObject<STHALLinks>
-+ (NSArray *)linksForRelationNamed:(NSString *)name inDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions)options;
-- (id)initWithDictionary:(NSDictionary *)dict baseURL:(NSURL *)baseURL options:(STHALResourceReadingOptions)options;
-- (NSDictionary *)dictionaryRepresentationWithOptions:(STHALResourceWritingOptions)options;
++ (NSArray<STHALLink *> * __nullable)linksForRelationNamed:(NSString * __nonnull)name inDictionary:(NSDictionary<NSString *, NSString *> * __nonnull)dict baseURL:(NSURL * __nullable)baseURL options:(STHALResourceReadingOptions)options;
+- (instancetype __null_unspecified)init NS_UNAVAILABLE;
+- (instancetype __nullable)initWithDictionary:(NSDictionary<NSString *, NSString *> * __nonnull)dict baseURL:(NSURL * __nullable)baseURL options:(STHALResourceReadingOptions)options NS_DESIGNATED_INITIALIZER;
+- (NSDictionary<NSString *, id> * __nonnull)dictionaryRepresentationWithOptions:(STHALResourceWritingOptions)options;
 @end
